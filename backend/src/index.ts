@@ -1,7 +1,5 @@
 import { configuration } from './configuration'
-import { json, urlencoded } from 'express'
 import { WebApplication } from './app'
-import cors from 'cors'
 import { logger } from './util'
 import { Student } from './models/Student'
 import { PackageGroup } from './models/PackageGroup'
@@ -9,7 +7,7 @@ import { Package } from './models/Packages'
 import { StudentGrant } from './models/StudentGranted'
 import { StudentSelect, StudentSelectAttributes } from './models/StudentSelect'
 import { StudentSubmit } from './models/StudentSubmit'
-import { HasMany, HasOne, Op } from 'sequelize'
+import { Op } from 'sequelize'
 import ejs from 'ejs'
 import pdf from 'html-pdf'
 import path from 'path'
@@ -101,6 +99,7 @@ async function main() {
                     studentId: student.studentId,
                     valid: true,
                 },
+                order: [['createdAt', 'DESC']],
             })
 
             const studentGrant = await StudentGrant.findOne({
@@ -208,6 +207,7 @@ async function main() {
                     studentId: student.studentId,
                     valid: true,
                 },
+                order: [['createdAt', 'DESC']],
             })
 
             if (alreadySubmit) throw new Error('นักเรียนได้มีการลงทะเบียนไปแล้ว')
@@ -331,8 +331,11 @@ async function main() {
                         },
                     }).toStream((err, read) => {
                         if (err) throw err
-                        res.setHeader('Content-Type', 'application/pdf');
-                        res.setHeader('Content-Disposition', `attachment; filename=agreement_${student.studentId}.pdf`);
+                        res.setHeader('Content-Type', 'application/pdf')
+                        res.setHeader(
+                            'Content-Disposition',
+                            `attachment; filename=agreement_${student.studentId}.pdf`,
+                        )
                         read.pipe(res)
                         read.on('end', () => res.end())
                     })
