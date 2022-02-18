@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Pridi:wght@200,400,500,600&display=swap" rel="stylesheet">
+        <style>
+            * {
+                font-family: 'Pridi', serif;
+                font-style: normal;
+            }
+            h1, h2, h3, h4, h5 {
+                font-weight: 500;
+            }
+            html{
+                zoom: 0.7;
+            }
+        </style>
+    </head>
+    <body>
+        <table style="width: 80%;margin: 0 10%;border-spacing:0;">
+            <tr>
+                <td colspan="1" style="text-align: center;">
+                    <img
+                        src="https://www.horwang.ac.th/logo_horwang.png"
+                        style="height: 3cm; display: inline-block"
+                    />
+                </td>
+                <td colspan="4" style="text-align: center; padding: 0.5em">
+                    <h3> ใบสมัครสำหรับศึกษาชั้นมัธยมศึกษาปีที่ 4 </h3>
+                    <h4>
+                        สำหรับนักเรียนชั้นมัธยมศึกษาปีที่ 3 เดิมจากโรงเรียนหอวัง
+                        <br />
+                        ปีการศึกษา 2565
+                    </h4>
+                </td>
+                <td colspan="1" style="text-align: right;">
+                    <div style="display: inline-block;border: 1px solid; width: 4cm; aspect-ratio: 0.7648184">
+                        <span style="display: block; padding: 1.5cm 20px; text-align: center"
+                            >รูปภาพนักเรียนขนาด 2 นิ้ว</span
+                        >
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="6">
+                    <span style="margin: 0 1em 0 0;">ชื่อจริง <%= student.title %> <%= student.firstName %> <%= student.lastName%></span>
+                    <span style="margin: 0 1em 0 0;">ชั้น ม.<%= student.class %>/<%= student.room %> เลขที่ <%= student.roomId %></span>
+                    <br />
+                    <span style="margin: 0 1em 0 0;">เลขประจำตัวประชาชน <%= student.identityNumber %></span>
+                    <span style="margin: 0 1em 0 0;">เลขประจำตัวนักเรียน <%= student.studentId %></span>
+                    <p style="text-indent: 1.5em;">
+                        ข้าพเจ้าทราบรายละเอียดเกี่ยวกับการเลือกกลุ่มการเรียน และวิธีการพิจารณารับนักเรียนเข้าศึกษาต่อชั้นมัธยมศึกษาปีที่ 4 จากนักเรียนที่จบชั้นมัธยมศึกษาปีที่ 3 โรงเรียนหอวัง เป็นอย่างดีแล้ว ข้าพเจ้ามีความประสงค์ที่จะสมัครเข้าศึกษาต่อชั้นมัธยมศึกษาปีที่ 4 โดยขอเลือกกลุ่มการเรียนดังนี้
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="6">
+                    <table style="width: 80%;margin: 0 10%;border-spacing:0;">
+                        <tr>
+                            <th style="border: 1px solid #777777;background-color: #b9b9b9;">ลำดับที่</th>
+                            <th style="border: 1px solid #777777;background-color: #b9b9b9;">สาขาที่เลือก</th>
+                        </tr>
+                        <% submit.StudentSelects.forEach((selected, index) => { %>
+                        <tr>
+                            <td style="border: 1px solid #777777;text-align: right; padding: 5px;"><%= index + 1 %></td>
+                            <td style="border: 1px solid #777777;padding: 5px;"><%= selected.Package.packageName %></td>
+                        </tr>
+                        <% }) %>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="6">
+                    <p style="text-indent: 1.5em;">
+                        ทั้งนี้ ผู้ปกครองได้รับทราบและเห็นด้วยกับการเลือกกลุ่มการเรียนทุกอันดับของข้าพเจ้าดังข้างต้นนี้แล้ว และข้าพเจ้าจะ<u>ไม่ขอเปลี่ยนแปลงการเลือกกลุ่มการเรียนอีก</u>หลังจากส่งใบสมัครนี้
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="6" style="text-align: right;padding: 10px 0;">
+                    ผู้สมัคร _____________________
+                    <br />
+                    วันที่ _______________________
+                </td>
+            </tr>
+            <tr>
+                <td colspan="6" style="border-top: 1px solid #777777;">
+                    <h4 style="text-align: center;">คำรับรองของผู้ปกครอง</h4>
+                    <p style="text-indent: 1.5em;">
+                        ข้าพเจ้า...........................................................................
+                        อาชีพ...........................
+                        โทรศัพท์......................
+                        <br />
+                        สถานที่ทำงาน..............................................................
+                        เป็นผู้ปกครองของ <%= student.title %> <%= student.firstName %> <%= student.lastName%> ชั้น ม.<%= student.class %>/<%= student.room %> เลขที่ <%= student.roomId %>
+                        ได้รับทราบรายละเอียดเกี่ยวกับกลุ่มการเรียนและวิธีการรับสมัครเข้าศึกษาต่อชั้นมัธยมศึกษาปีที่ 4 เป็นอย่างดีแล้ว ข้าพเจ้าได้พิจารณาและตัดสินใจร่วมกันกับนักเรียนในความปกครองของข้าพเจ้า ในการเลือกกลุ่มการเรียนเพื่อสมัครเข้าศึกษาต่อในชั้นมัธยมศึกษาปีที่ 4 โรงเรียนหอวัง
+                    </p>
+                    <p style="text-indent: 1.5em;">
+                        ข้าพเจ้าขอรับรองความถูกต้องของใบสมัคร ตามข้อความข้างต้นนี้ทุกประการ
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="6" style="text-align: right;padding: 10px 0;">
+                    ลงชื่อ _____________ ผู้ปกครอง
+                    <br />
+                    วันที่ ______________________
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3" style="border: 1px solid #777777;">
+                    <h4 style="text-align: center;">ความคิดเห็นของครูที่ปรึกษา</h4>
+                    <hr style="margin: 18pt 5px;"/>
+                    <hr style="margin: 18pt 5px;"/>
+                    <hr style="margin: 18pt 5px;"/>
+                    <hr style="margin: 18pt 5px;"/>
+                    <hr style="margin: 18pt 5px;"/>
+                    <h4 style="padding: 16pt 0;text-align: center;">
+                        ครูที่ปรึกษา ______________________ 
+                        <br />
+                        วันที่ ______________________
+                    </h4>
+                </td>
+                <td colspan="3" style="border: 1px solid #777777;">
+                    <h4 style="text-align: center;">ความคิดเห็นของครูแนะแนว</h4>
+                    <hr  style="margin: 18pt 5px;"/>
+                    <hr  style="margin: 18pt 5px;"/>
+                    <hr  style="margin: 18pt 5px;"/>
+                    <hr  style="margin: 18pt 5px;"/>
+                    <hr  style="margin: 18pt 5px;"/>
+                    <h4 style="padding: 16pt 0;text-align: center;">
+                        ครูแนะแนว ______________________
+                        <br />
+                        วันที่ ______________________
+                    </h4>
+                </td>
+            </tr>
+        </table>
+    </body>
+</html>
