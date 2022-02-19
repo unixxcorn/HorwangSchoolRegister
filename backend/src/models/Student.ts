@@ -28,20 +28,20 @@ export class Student extends Model<StudentAttributes> {
 Student.init(
     {
         studentId: {
-            type: DataTypes.STRING,
+            type: DataTypes.STRING(126),
             primaryKey: true,
         },
         identityNumber: {
-            type: DataTypes.STRING,
+            type: DataTypes.STRING(126),
         },
         title: {
-            type: DataTypes.STRING,
+            type: DataTypes.STRING(126),
         },
         firstName: {
-            type: DataTypes.STRING,
+            type: DataTypes.STRING(126),
         },
         lastName: {
-            type: DataTypes.STRING,
+            type: DataTypes.STRING(126),
         },
         class: {
             type: DataTypes.INTEGER.UNSIGNED,

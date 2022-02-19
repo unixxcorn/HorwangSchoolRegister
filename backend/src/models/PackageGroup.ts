@@ -23,7 +23,7 @@ PackageGroup.init(
             autoIncrement: true
         },
         groupName: {
-            type: DataTypes.STRING,
+            type: DataTypes.STRING(126),
         },
     },
     {

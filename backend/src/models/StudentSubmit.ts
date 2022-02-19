@@ -25,7 +25,7 @@ StudentSubmit.init(
             autoIncrement: true
         },
         studentId: {
-            type: DataTypes.STRING,
+            type: DataTypes.STRING(126),
         },
         valid: {
             type: DataTypes.BOOLEAN,

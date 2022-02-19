@@ -23,7 +23,7 @@ Package.init(
             autoIncrement: true
         },
         packageName: {
-            type: DataTypes.STRING,
+            type: DataTypes.STRING(126),
         },
         packageGroupId: {
             type: DataTypes.INTEGER.UNSIGNED

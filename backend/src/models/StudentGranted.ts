@@ -25,7 +25,7 @@ export class StudentGrant extends Model<StudentGrantAttributes> {
 StudentGrant.init(
     {
         studentId: {
-            type: DataTypes.STRING,
+            type: DataTypes.STRING(126),
             primaryKey: true,
         },
         allow: {
