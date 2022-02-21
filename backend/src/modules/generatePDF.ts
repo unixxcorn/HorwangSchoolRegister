@@ -57,9 +57,17 @@ export async function generatePDF(req: Request, res: Response) {
         if (!submit)
             throw new Error('ไม่พบข้อมูลการลงทะเบียนของนักเรียน');
 
+        const selects = await StudentSelect.findAll({
+            order: [['order', 'ASC']],
+            include: [Package],
+        })
+
+        if (!selects || selects.length <= 0)
+            throw new Error('ไม่พบข้อมูลการลงทะเบียนของนักเรียน');
+
         ejs.renderFile(
             path.join(__dirname, '../../views/', 'agreementTemplate.ejs'),
-            { student: student.toJSON(), submit: submit.toJSON() },
+            { student: student.toJSON(), submit: {...submit.toJSON(), StudentSelects: selects.map(s => s.toJSON())} },
             (err, data) => {
                 if (err)
                     throw err;
